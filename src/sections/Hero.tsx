@@ -67,7 +67,7 @@ export function Hero({ site }: { site: Site }) {
             duration: 700,
             delay: stagger(100),
           },
-          "-=600",
+          0,
         )
         .add(".jm-cue", {
           opacity: [0, 1],
