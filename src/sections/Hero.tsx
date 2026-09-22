@@ -1,5 +1,7 @@
 import { animate, createScope, createTimeline, svg } from "animejs"
 import { useEffect, useRef } from "react"
+import Aurora from "../components/Aurora"
+import { ShinyText } from "../components/ShinyText"
 import type { Site } from "../lib/content"
 import { prefersReducedMotion } from "../lib/smooth"
 
@@ -61,12 +63,14 @@ export function Hero({ site }: { site: Site }) {
       ref={root}
       className="relative flex min-h-svh flex-col justify-between overflow-hidden px-6 py-8 md:px-12"
     >
-      <img
-        src={`${import.meta.env.BASE_URL}images/dot-grid.svg`}
-        alt=""
-        aria-hidden
-        className="jm-bg pointer-events-none absolute -top-24 left-0 w-full opacity-0 max-md:opacity-30 md:opacity-40"
-      />
+      <div className="jm-bg pointer-events-none absolute inset-x-0 top-0 h-[45svh] opacity-0 max-md:opacity-50 md:opacity-60">
+        <Aurora
+          colorStops={["#ff5c33", "#ffb03a", "#ff5c33"]}
+          amplitude={1.1}
+          blend={0.6}
+          speed={0.8}
+        />
+      </div>
       <nav className="relative z-10 flex justify-between font-mono text-sm text-paper-dim">
         <a href="#work" className="hover:text-accent">
           Work
@@ -104,7 +108,14 @@ export function Hero({ site }: { site: Site }) {
           style={{ opacity: prefersReducedMotion() ? 1 : 0 }}
         >
           <p className="font-mono text-sm uppercase tracking-widest text-accent">
-            {site.site.role}
+            <ShinyText
+              text={site.site.role}
+              speed={3}
+              delay={2}
+              color="var(--color-accent)"
+              shineColor="#ffffff"
+              className="uppercase tracking-widest"
+            />
           </p>
           <h1 className="mt-3 text-xl leading-snug md:text-2xl">
             {site.hero.tagline}
