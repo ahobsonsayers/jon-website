@@ -206,7 +206,7 @@ export function Hero({ site }: { site: Site }) {
         <a
           href="#about"
           aria-label="Scroll to about"
-          className="jm-cue font-mono text-2xl text-paper-dim hover:text-accent"
+          className="jm-cue font-mono text-4xl text-paper-dim hover:text-accent"
           style={{ opacity: prefersReducedMotion() ? 1 : 0 }}
         >
           ↓
