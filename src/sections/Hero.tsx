@@ -2,7 +2,6 @@ import { animate, createScope, createTimeline, stagger, svg } from "animejs"
 import { useEffect, useRef } from "react"
 import Aurora from "../components/Aurora"
 import FoldText from "../components/FoldText/FoldText"
-import { ShinyText } from "../components/ShinyText"
 import TextLoop from "../components/TextLoop/TextLoop"
 import type { Site } from "../lib/content"
 import { prefersReducedMotion } from "../lib/smooth"
@@ -58,16 +57,6 @@ export function Hero({ site }: { site: Site }) {
           ".jm-fill",
           { fillOpacity: [0, 1], duration: 600, delay: stagger(40) },
           "-=800",
-        )
-        .add(
-          ".jm-fade",
-          {
-            opacity: [0, 1],
-            translateY: [16, 0],
-            duration: 700,
-            delay: stagger(100),
-          },
-          0,
         )
         .add(".jm-cue", {
           opacity: [0, 1],
@@ -168,17 +157,21 @@ export function Hero({ site }: { site: Site }) {
         </svg>
 
         <div className="mt-4 max-w-xl">
-          <p className="jm-fade font-mono text-sm uppercase tracking-widest text-accent">
-            <ShinyText
+          <h2 className="font-mono text-sm uppercase tracking-widest text-accent">
+            <FoldText
               text={site.site.role}
-              speed={3}
-              delay={2}
-              color="var(--color-accent)"
-              shineColor="#ffffff"
-              className="uppercase tracking-widest"
+              splitBy="word"
+              hinge="top"
+              duration={0.55}
+              stagger={0.06}
+              trigger="mount"
+              fontSize="inherit"
+              fontWeight="inherit"
+              color="inherit"
+              className="inline-block"
             />
-          </p>
-          <h1 className="jm-fade mt-5 text-xl leading-snug md:text-2xl">
+          </h2>
+          <h1 className="mt-5 text-xl leading-snug md:text-2xl">
             <FoldText
               text={site.hero.tagline}
               splitBy="word"
@@ -192,7 +185,20 @@ export function Hero({ site }: { site: Site }) {
               className="text-xl leading-snug md:text-2xl"
             />
           </h1>
-          <p className="jm-fade mt-5 text-paper-dim">{site.hero.sub}</p>
+          <p className="mt-5 text-paper-dim">
+            <FoldText
+              text={site.hero.sub}
+              splitBy="word"
+              hinge="top"
+              duration={0.55}
+              stagger={0.06}
+              trigger="mount"
+              fontSize="inherit"
+              fontWeight="inherit"
+              color="inherit"
+              className="text-paper-dim"
+            />
+          </p>
         </div>
       </div>
 
