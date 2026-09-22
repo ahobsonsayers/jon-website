@@ -1,0 +1,83 @@
+site:
+  name: Jon Masters
+  role: Comedy Director · Writer · Performer
+
+hero:
+  tagline: I make funny things for television, stage and the internet.
+  sub: >-
+    Twenty years of sketches, sitcoms and sell-out live shows — directed,
+    written and occasionally performed, always with the jokes first.
+
+about:
+  photo: images/jon.svg
+  paragraphs:
+    - >-
+      Jon Masters is a comedy director based in London. He has directed
+      BAFTA-nominated sketch shows, fringe shows that sold out before anyone
+      had heard of the acts, and more branded-content sketches than he
+      will admit to at parties.
+    - >-
+      He works with writers early, shoots fast and edits tighter than the
+      budget deserves. If it gets a laugh in the room and a bigger laugh on
+      the upload, it ships.
+
+projects:
+  - title: Dead Air
+    category: Sketch Series
+    year: 2025
+    image: images/poster-dead-air.svg
+  - title: The Understudies
+    category: Sitcom Pilot
+    year: 2024
+    image: images/poster-understudies.svg
+  - title: Live at the Dog & Duck
+    category: Stand-up Special
+    year: 2024
+    image: images/poster-dog-duck.svg
+  - title: Punchlines, Inc.
+    category: Branded Series
+    year: 2023
+    image: images/poster-punchlines.svg
+  - title: Two Minutes' Silence
+    category: Short Film
+    year: 2022
+    image: images/poster-two-minutes.svg
+  - title: The Warm-Up Man
+    category: Documentary
+    year: 2021
+    image: images/poster-warm-up-man.svg
+
+services:
+  - title: Direction
+    description: Sketch, sitcom and live comedy — from read-through to final grade.
+  - title: Writing
+    description: Script edits, punch-up passes and formats that survive contact with production.
+  - title: Development
+    description: Taking a comedian's idea from "trust me" to a tape that gets commissioned.
+  - title: Performance Coaching
+    description: Making presenters funny and actors loose, without killing what makes them watchable.
+
+testimonials:
+  - quote: Jon turned half a page of notes into the best thing we've made all year.
+    author: Sam Okafor
+    source: Executive Producer, Channel 4
+  - quote: He directs like an editor and edits like a writer. Unfair, really.
+    author: Priya Nair
+    source: Commissioning Editor, BBC Comedy
+  - quote: The only director our act has worked with twice. That's the review.
+    author: Fox & Fielding
+    source: Double Act
+  - quote: Delivered on budget, a week early, with jokes we didn't write in it.
+    author: Marcus Webb
+    source: Head of Content, streaming thing
+
+contact:
+  email: hello@jonmasters.co.uk
+  blurb: Represented by Bright Talent. Available UK & worldwide.
+  socials:
+    - label: Instagram
+      url: https://instagram.com
+    - label: Vimeo
+      url: https://vimeo.com
+    - label: LinkedIn
+      url: https://linkedin.com
