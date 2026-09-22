@@ -154,11 +154,8 @@ export function Hero({ site }: { site: Site }) {
           </g>
         </svg>
 
-        <div
-          className="jm-fade mt-8 max-w-xl"
-          style={{ opacity: prefersReducedMotion() ? 1 : 0 }}
-        >
-          <p className="font-mono text-sm uppercase tracking-widest text-accent">
+        <div className="mt-8 max-w-xl">
+          <p className="jm-fade font-mono text-sm uppercase tracking-widest text-accent">
             <ShinyText
               text={site.site.role}
               speed={3}
@@ -175,29 +172,33 @@ export function Hero({ site }: { site: Site }) {
               hinge="top"
               duration={0.55}
               stagger={0.06}
+              trigger="scroll"
               fontSize="inherit"
               fontWeight="inherit"
               color="inherit"
               className="text-xl leading-snug md:text-2xl"
             />
           </h1>
-          <p className="mt-3 text-paper-dim">{site.hero.sub}</p>
+          <p className="jm-fade mt-3 text-paper-dim">{site.hero.sub}</p>
         </div>
       </div>
 
-      <div className="jm-fade relative z-10">
+      <div className="relative z-10">
         <TextLoop
-          text="Comedy Direction ✦ Writing ✦ Performance ✦"
-          shape="line"
+          text="Comedy Direction        ✦        Writing        ✦        Performance"
+          shape="wave"
           speed={70}
           separator=""
-          fontSize={22}
+          curviness={70}
+          fontSize={26}
           fontWeight={600}
           letterSpacing={3}
           color="var(--color-paper-dim)"
-          ribbon={false}
+          ribbon
+          ribbonColor="var(--color-accent)"
+          ribbonWidth={64}
           pauseOnHover
-          className="max-w-full opacity-80"
+          className="max-w-full opacity-90"
         />
       </div>
 
