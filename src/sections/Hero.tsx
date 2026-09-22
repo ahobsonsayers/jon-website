@@ -1,32 +1,32 @@
-import { animate, createScope, createTimeline, svg } from "animejs"
+import { animate, createScope, createTimeline, stagger, svg } from "animejs"
 import { useEffect, useRef } from "react"
 import Aurora from "../components/Aurora"
+import FoldText from "../components/FoldText/FoldText"
 import { ShinyText } from "../components/ShinyText"
+import TextLoop from "../components/TextLoop/TextLoop"
 import type { Site } from "../lib/content"
 import { prefersReducedMotion } from "../lib/smooth"
 
-const LOGO_PATHS = [
-  // J — stem down the right, hook curving left at the bottom
-  "M50 10 V70 Q50 90 32 90 Q14 90 14 68",
-  // O
-  "M100 10 Q80 10 80 50 Q80 90 100 90 Q120 90 120 50 Q120 10 100 10",
-  // N
-  "M150 90 V10 L190 90 V10",
-  // (space) M
-  "M240 90 V10 L270 60 L300 10 V90",
-  // A
-  "M330 90 L350 10 L370 90 M338 60 H362",
-  // S
-  "M420 20 Q400 10 395 25 Q390 40 420 45 Q450 50 445 70 Q440 90 415 80",
-  // T
-  "M460 10 H520 M490 10 V90",
-  // E
-  "M545 10 H595 M545 10 V90 M545 50 H580 M545 90 H595",
-  // R
-  "M620 90 V10 H650 Q670 10 670 35 Q670 60 650 60 H620 M655 60 L680 90",
-  // S
-  "M730 20 Q710 10 705 25 Q700 40 730 45 Q760 50 755 70 Q750 90 725 80",
-] as const
+type Letter = { ch: string; x: number; y: number; w: number }
+
+const JON: Letter[] = [
+  { ch: "J", x: 40, y: 100, w: 80 },
+  { ch: "O", x: 144, y: 100, w: 96 },
+  { ch: "N", x: 264, y: 100, w: 96 },
+]
+
+const MASTERS: Letter[] = [
+  { ch: "M", x: 170, y: 238, w: 104 },
+  { ch: "A", x: 298, y: 238, w: 88 },
+  { ch: "S", x: 410, y: 238, w: 76 },
+  { ch: "T", x: 510, y: 238, w: 84 },
+  { ch: "E", x: 618, y: 238, w: 72 },
+  { ch: "R", x: 714, y: 238, w: 88 },
+  { ch: "S", x: 826, y: 238, w: 76 },
+]
+
+const JON_FILL = "#ffb3a0"
+const MASTERS_FILL = "#ffd9a3"
 
 export function Hero({ site }: { site: Site }) {
   const root = useRef<HTMLDivElement>(null)
@@ -38,22 +38,31 @@ export function Hero({ site }: { site: Site }) {
       const tl = createTimeline({ defaults: { ease: "inOutQuad" } })
       tl.add(drawables, {
         draw: "0 1",
-        duration: 1400,
-        delay: (_el: unknown, i: number) => 120 * i,
+        duration: 500,
+        delay: stagger(70),
       } as never)
-        .add(".jm-fade", {
-          opacity: [0, 1],
-          translateY: [16, 0],
-          duration: 700,
-          delay: 200,
-        })
+        .add(
+          ".jm-fill",
+          { fillOpacity: [0, 1], duration: 600, delay: stagger(40) },
+          "-=800",
+        )
+        .add(
+          ".jm-fade",
+          {
+            opacity: [0, 1],
+            translateY: [16, 0],
+            duration: 700,
+            delay: stagger(100),
+          },
+          "-=600",
+        )
         .add(".jm-cue", {
           opacity: [0, 1],
           duration: 600,
           loop: true,
           alternate: true,
         })
-      animate(".jm-bg", { opacity: [0, 1], duration: 1200 })
+      animate(".jm-bg", { opacity: [0, 1], duration: 1000 })
     })
     return () => scope.revert()
   }, [])
@@ -82,25 +91,67 @@ export function Hero({ site }: { site: Site }) {
 
       <div className="relative z-10 mx-auto w-full max-w-4xl">
         <svg
-          viewBox="0 0 760 100"
+          viewBox="0 0 980 340"
           className="w-full"
           role="img"
           aria-label={site.site.name}
         >
-          {LOGO_PATHS.map((d) => (
-            <path
-              key={d}
-              className="jm-line"
-              d={d}
-              fill="none"
-              stroke="var(--color-paper)"
-              strokeWidth="4"
-              strokeLinecap="round"
-              pathLength={1}
-              strokeDasharray={1}
-              strokeDashoffset={1}
-            />
-          ))}
+          <g className="font-bold" style={{ fontSize: 120 }}>
+            {JON.map((l) => (
+              <g key={`j-${l.ch}`}>
+                <text
+                  className="jm-fill"
+                  x={l.x}
+                  y={l.y}
+                  fill={JON_FILL}
+                  fillOpacity={prefersReducedMotion() ? 1 : 0}
+                >
+                  {l.ch}
+                </text>
+                <text
+                  className="jm-line"
+                  x={l.x}
+                  y={l.y}
+                  fill="none"
+                  stroke="var(--color-paper)"
+                  strokeWidth="3"
+                  pathLength={1}
+                  strokeDasharray={1}
+                  strokeDashoffset={prefersReducedMotion() ? 0 : 1}
+                >
+                  {l.ch}
+                </text>
+              </g>
+            ))}
+          </g>
+          <g className="font-bold" style={{ fontSize: 120 }}>
+            {MASTERS.map((l) => (
+              <g key={`m-${l.ch}-${l.x}`}>
+                <text
+                  className="jm-fill"
+                  x={l.x}
+                  y={l.y}
+                  fill={MASTERS_FILL}
+                  fillOpacity={prefersReducedMotion() ? 1 : 0}
+                >
+                  {l.ch}
+                </text>
+                <text
+                  className="jm-line"
+                  x={l.x}
+                  y={l.y}
+                  fill="none"
+                  stroke="var(--color-paper)"
+                  strokeWidth="3"
+                  pathLength={1}
+                  strokeDasharray={1}
+                  strokeDashoffset={prefersReducedMotion() ? 0 : 1}
+                >
+                  {l.ch}
+                </text>
+              </g>
+            ))}
+          </g>
         </svg>
 
         <div
@@ -118,10 +169,36 @@ export function Hero({ site }: { site: Site }) {
             />
           </p>
           <h1 className="mt-3 text-xl leading-snug md:text-2xl">
-            {site.hero.tagline}
+            <FoldText
+              text={site.hero.tagline}
+              splitBy="word"
+              hinge="top"
+              duration={0.55}
+              stagger={0.06}
+              fontSize="inherit"
+              fontWeight="inherit"
+              color="inherit"
+              className="text-xl leading-snug md:text-2xl"
+            />
           </h1>
           <p className="mt-3 text-paper-dim">{site.hero.sub}</p>
         </div>
+      </div>
+
+      <div className="jm-fade relative z-10">
+        <TextLoop
+          text="Comedy Direction ✦ Writing ✦ Performance ✦"
+          shape="line"
+          speed={70}
+          separator=""
+          fontSize={22}
+          fontWeight={600}
+          letterSpacing={3}
+          color="var(--color-paper-dim)"
+          ribbon={false}
+          pauseOnHover
+          className="max-w-full opacity-80"
+        />
       </div>
 
       <div className="relative z-10 flex justify-center">
