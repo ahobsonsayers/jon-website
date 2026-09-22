@@ -273,6 +273,8 @@ const FoldText = ({
       clearProps: "willChange",
     }
 
+    const visual = root.querySelector<HTMLElement>(".fold-text-visual")
+
     const killTimeline = () => {
       timelineRef.current?.kill()
       timelineRef.current = null
@@ -281,6 +283,7 @@ const FoldText = ({
 
     const play = (repeat: boolean): gsap.core.Timeline => {
       killTimeline()
+      if (visual) gsap.set(visual, { opacity: 1 })
       timelineRef.current = gsap.timeline({
         repeat: repeat ? -1 : 0,
         repeatDelay: repeat ? 0.75 : 0,
@@ -349,7 +352,15 @@ const FoldText = ({
         style={rootStyle}
       >
         <span className="fold-text-sr-only">{text}</span>
-        <span className="fold-text-visual" aria-hidden="true">
+        <span
+          className="fold-text-visual"
+          aria-hidden="true"
+          style={
+            trigger === "mount" || trigger === "scroll"
+              ? { opacity: 0 }
+              : undefined
+          }
+        >
           {segments}
         </span>
       </span>
