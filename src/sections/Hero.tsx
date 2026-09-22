@@ -199,7 +199,7 @@ export function Hero({ site }: { site: Site }) {
           speed={70}
           separator=""
           curviness={70}
-          fontSize={26}
+          fontSize={34}
           fontWeight={600}
           letterSpacing={3}
           color="var(--color-paper)"
