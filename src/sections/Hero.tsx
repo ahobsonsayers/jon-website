@@ -4,8 +4,8 @@ import type { Site } from "../lib/content"
 import { prefersReducedMotion } from "../lib/smooth"
 
 const LOGO_PATHS = [
-  // J
-  "M20 10 V70 Q20 90 40 90 Q60 90 60 70 V10",
+  // J — stem down the right, hook curving left at the bottom
+  "M50 10 V70 Q50 90 32 90 Q14 90 14 68",
   // O
   "M100 10 Q80 10 80 50 Q80 90 100 90 Q120 90 120 50 Q120 10 100 10",
   // N
