@@ -4,7 +4,7 @@ import { asset, type Site } from "../lib/content"
 export function About({ site }: { site: Site }) {
   const { about } = site
   return (
-    <section id="about" className="mx-auto max-w-6xl px-6 py-24 md:px-12">
+    <section id="about" className="mx-auto max-w-6xl px-6 py-12 md:px-12 md:py-24">
       <SectionHeading index="01" title="About" />
       <div className="grid gap-12 md:grid-cols-[1fr_2fr]">
         <Reveal className="flex md:block">

@@ -40,7 +40,7 @@ function Poster({
 
 export function Work({ site }: { site: Site }) {
   return (
-    <section id="work" className="mx-auto max-w-6xl px-6 py-24 md:px-12">
+    <section id="work" className="mx-auto max-w-6xl px-6 py-12 md:px-12 md:py-24">
       <SectionHeading index="02" title="Work" />
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {site.projects.map((p, i) => (

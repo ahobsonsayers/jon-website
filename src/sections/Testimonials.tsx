@@ -48,7 +48,7 @@ function Row({
 export function Testimonials({ site }: { site: Site }) {
   const mid = Math.ceil(site.testimonials.length / 2)
   return (
-    <section id="testimonials" className="py-24">
+    <section id="testimonials" className="py-12 md:py-24">
       <div className="mx-auto mb-12 max-w-6xl px-6 md:px-12">
         <SectionHeading index="04" title="Kind Words" />
       </div>
