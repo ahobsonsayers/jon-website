@@ -168,10 +168,7 @@ export function Hero({ site }: { site: Site }) {
         </svg>
 
         <div className="mt-4 max-w-xl">
-          <p
-            className="jm-fade font-mono text-sm uppercase tracking-widest text-accent"
-            style={{ opacity: prefersReducedMotion() ? 1 : 0 }}
-          >
+          <p className="jm-fade font-mono text-sm uppercase tracking-widest text-accent">
             <ShinyText
               text={site.site.role}
               speed={3}
@@ -181,26 +178,21 @@ export function Hero({ site }: { site: Site }) {
               className="uppercase tracking-widest"
             />
           </p>
-          <h1 className="mt-5 text-xl leading-snug md:text-2xl">
+          <h1 className="jm-fade mt-5 text-xl leading-snug md:text-2xl">
             <FoldText
               text={site.hero.tagline}
               splitBy="word"
               hinge="top"
               duration={0.55}
               stagger={0.06}
-              trigger="scroll"
+              trigger="mount"
               fontSize="inherit"
               fontWeight="inherit"
               color="inherit"
               className="text-xl leading-snug md:text-2xl"
             />
           </h1>
-          <p
-            className="jm-fade mt-5 text-paper-dim"
-            style={{ opacity: prefersReducedMotion() ? 1 : 0 }}
-          >
-            {site.hero.sub}
-          </p>
+          <p className="jm-fade mt-5 text-paper-dim">{site.hero.sub}</p>
         </div>
       </div>
 
