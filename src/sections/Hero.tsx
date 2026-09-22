@@ -36,11 +36,20 @@ export function Hero({ site }: { site: Site }) {
     const scope = createScope({ root: root.current ?? undefined }).add(() => {
       const drawables = svg.createDrawable(".jm-line")
       const tl = createTimeline({ defaults: { ease: "inOutQuad" } })
-      tl.add(drawables, {
+      tl.add(drawables.slice(0, JON.length), {
         draw: "0 1",
         duration: 500,
         delay: stagger(70),
-      } as never)
+      } as never, 0)
+        .add(
+          drawables.slice(JON.length),
+          {
+            draw: "0 1",
+            duration: 500,
+            delay: stagger(70),
+          } as never,
+          0,
+        )
         .add(
           ".jm-fill",
           { fillOpacity: [0, 1], duration: 600, delay: stagger(40) },
