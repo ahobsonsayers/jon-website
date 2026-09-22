@@ -181,10 +181,7 @@ export function Hero({ site }: { site: Site }) {
               className="uppercase tracking-widest"
             />
           </p>
-          <h1
-            className="mt-5 text-xl leading-snug md:text-2xl"
-            style={{ opacity: prefersReducedMotion() ? 1 : 0 }}
-          >
+          <h1 className="mt-5 text-xl leading-snug md:text-2xl">
             <FoldText
               text={site.hero.tagline}
               splitBy="word"
