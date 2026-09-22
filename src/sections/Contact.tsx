@@ -4,7 +4,10 @@ import type { Site } from "../lib/content"
 export function Contact({ site }: { site: Site }) {
   const { contact } = site
   return (
-    <section id="contact" className="mx-auto max-w-6xl px-6 py-12 md:px-12 md:py-24">
+    <section
+      id="contact"
+      className="mx-auto max-w-6xl px-6 py-12 md:px-12 md:py-24"
+    >
       <SectionHeading index="05" title="Contact" />
       <Reveal>
         <p className="max-w-xl text-xl text-paper-dim">{contact.blurb}</p>

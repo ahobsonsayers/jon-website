@@ -36,11 +36,15 @@ export function Hero({ site }: { site: Site }) {
     const scope = createScope({ root: root.current ?? undefined }).add(() => {
       const drawables = svg.createDrawable(".jm-line")
       const tl = createTimeline({ defaults: { ease: "inOutQuad" } })
-      tl.add(drawables.slice(0, JON.length), {
-        draw: "0 1",
-        duration: 500,
-        delay: stagger(70),
-      } as never, 0)
+      tl.add(
+        drawables.slice(0, JON.length),
+        {
+          draw: "0 1",
+          duration: 500,
+          delay: stagger(70),
+        } as never,
+        0,
+      )
         .add(
           drawables.slice(JON.length),
           {
@@ -163,7 +167,7 @@ export function Hero({ site }: { site: Site }) {
           </g>
         </svg>
 
-        <div className="mt-8 max-w-xl">
+        <div className="mt-4 max-w-xl">
           <p className="jm-fade font-mono text-sm uppercase tracking-widest text-accent">
             <ShinyText
               text={site.site.role}
@@ -174,7 +178,7 @@ export function Hero({ site }: { site: Site }) {
               className="uppercase tracking-widest"
             />
           </p>
-          <h1 className="mt-3 text-xl leading-snug md:text-2xl">
+          <h1 className="mt-5 text-xl leading-snug md:text-2xl">
             <FoldText
               text={site.hero.tagline}
               splitBy="word"
@@ -188,7 +192,7 @@ export function Hero({ site }: { site: Site }) {
               className="text-xl leading-snug md:text-2xl"
             />
           </h1>
-          <p className="jm-fade mt-3 text-paper-dim">{site.hero.sub}</p>
+          <p className="jm-fade mt-5 text-paper-dim">{site.hero.sub}</p>
         </div>
       </div>
 

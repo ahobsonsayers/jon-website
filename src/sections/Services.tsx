@@ -3,7 +3,10 @@ import type { Site } from "../lib/content"
 
 export function Services({ site }: { site: Site }) {
   return (
-    <section id="services" className="mx-auto max-w-6xl px-6 py-12 md:px-12 md:py-24">
+    <section
+      id="services"
+      className="mx-auto max-w-6xl px-6 py-12 md:px-12 md:py-24"
+    >
       <SectionHeading index="03" title="Services" />
       <div className="grid gap-6 sm:grid-cols-2">
         {site.services.map((s, i) => (
