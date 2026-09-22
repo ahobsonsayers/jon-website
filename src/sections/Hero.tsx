@@ -202,12 +202,12 @@ export function Hero({ site }: { site: Site }) {
           fontSize={26}
           fontWeight={600}
           letterSpacing={3}
-          color="var(--color-paper-dim)"
+          color="var(--color-paper)"
           ribbon
           ribbonColor="var(--color-accent)"
           ribbonWidth={64}
           pauseOnHover
-          className="max-w-full opacity-90"
+          className="max-w-full"
         />
       </div>
 
